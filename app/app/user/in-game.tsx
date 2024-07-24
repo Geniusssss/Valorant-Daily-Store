@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import useAuth from '../../hooks/useAuth';
+import { Redirect } from 'expo-router';
 
-export default function InGameScreen() {
+const InGame = () => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Redirect href="/" />;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>in-game</Text>
+      <Text style={styles.text}>In Game</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +27,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+export default InGame;
