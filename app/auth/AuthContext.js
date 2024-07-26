@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
         removeItem('ssid')
       ]);
 
-      if (error.response.status === 500 && error.response.data.error === 'Authentication failed') {
+      if (error.response.status === 400) {
         // Incorrect username or password
         // Multifactor authentication required
         // Bad Request
